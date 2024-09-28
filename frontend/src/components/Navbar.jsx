@@ -90,14 +90,20 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
               <>
                 <div className="absolute left-40 top-8 bg-white rounded-md shadow-md border">
                   <ul className="">
-                    <Link>
-                      <li className="p-4 hover:bg-gray-100 rounded-t-md text-nowrap">
+                    <Link to="/news&events">
+                      <li
+                        className="p-4 hover:bg-gray-100 rounded-t-md text-nowrap"
+                        onClick={() => setNewsEventsDropdown(false)}
+                      >
                         Add News & Events
                       </li>
                     </Link>
                     <hr />
                     <Link to="/news&events">
-                      <li className="p-4 hover:bg-gray-100 rounded-b-md text-nowrap">
+                      <li
+                        className="p-4 hover:bg-gray-100 rounded-b-md text-nowrap"
+                        onClick={() => setNewsEventsDropdown(false)}
+                      >
                         View News & Events
                       </li>
                     </Link>
@@ -121,7 +127,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
               <Link to="/profile">
                 <button
                   type="button"
-                  className="rounded-lg bg-slate-200 shadow-sm px-3 py-2 text-sm font-semibold text-black hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                  className="rounded-lg bg-gray-200 shadow-sm px-3 py-2 text-sm font-semibold text-black hover:bg-gray-300"
                 >
                   Profile
                 </button>
@@ -129,7 +135,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
               <Link onClick={handleLogout}>
                 <button
                   type="button"
-                  className="rounded-lg  px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline bg-blue-600 hover:bg-blue-500"
+                  className="rounded-lg  px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline bg-blue-500 hover:bg-blue-600"
                 >
                   Log Out
                 </button>
@@ -140,7 +146,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
               <Link to="/signup">
                 <button
                   type="button"
-                  className="rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-black hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                  className="rounded-lg px-3 py-2 text-sm font-semibold bg-gray-200 text-black hover:bg-gray-300"
                 >
                   Sign Up
                 </button>
@@ -148,7 +154,8 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
               <Link to="/signin">
                 <button
                   type="button"
-                  className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                  className="rounded-lg px-3 py-2 text-sm font-semibold text-white shadow-sm 
+                  bg-blue-500 hover:bg-blue-600"
                 >
                   Log In
                 </button>

@@ -122,14 +122,14 @@ const Profile = () => {
             !user?.education ||
             !user?.workExperience ||
             !user?.socialMedia) && (
-          <div className="w-full bg-gray-500 text-white p-4 md:p-6 shadow-lg z-50">
+          <div className="w-full bg-slate-800 text-white p-4 md:p-6 shadow-lg z-50">
             <div className="container mx-auto">
-              <div className="flex flex-col md:flex-row items-center justify-between">
+              <div className="flex flex-col md:flex-row items-start justify-between">
                 <div className="mb-4 md:mb-0">
                   <h2 className="text-xl md:text-2xl font-bold mb-2">
                     Complete Your Profile
                   </h2>
-                  <p className="text-sm md:text-base">
+                  <p className="text-sm md:text-base mr-4">
                     Enhance your experience by adding more information to your
                     profile!
                   </p>
@@ -186,7 +186,7 @@ const Profile = () => {
 
         <div className="py-16 p-4 bg-gray-100 min-h-screen">
           <div className="flex justify-center w-full">
-            <div className="flex flex-col md:flex-row gap-4 max-w-[1100px] w-full">
+            <div className="flex flex-col md:flex-row gap-4 max-w-[1400px] w-[90%]">
               {/* Left Column */}
               <div className="md:w-1/3 space-y-4">
                 {/* Profile Picture and Basic Info */}
@@ -211,10 +211,10 @@ const Profile = () => {
                     <h1 className="text-2xl font-bold text-center mb-2">
                       {user?.name}
                     </h1>
-                    <b className="text-gray-600 text-center mb-2">
+                    <p className="text-gray-600 font-semibold text-center mparam-2">
                       {user?.role}
-                    </b>
-                    <b className="text-gray-600 text-center mb-2">
+                    </p>
+                    <p className="text-gray-600 font-semibold text-center mb-2">
                       {(user?.role === "STUDENT" || user?.role === "ALUMNI") &&
                         user?.student &&
                         user?.student?.joiningYear +
@@ -226,7 +226,7 @@ const Profile = () => {
                         user?.faculty?.joiningYear +
                           " - " +
                           user?.faculty?.leftYear}
-                    </b>
+                    </p>
                     {/* {(user?.role === 'STUDENT' || user?.role === 'ALUMNI') && (
 										<p className='text-gray-600 text-center mb-2'>
 											<span className='font-semibold'>
@@ -241,7 +241,7 @@ const Profile = () => {
                 {/* Other Details */}
                 <div className="bg-white rounded-lg shadow-md p-6">
                   <h2 className="flex items-center justify-between text-xl font-semibold mb-4">
-                    Information:
+                    Information
                     <button
                       className="w-auto rounded-lg border-gray-300 shadow-md px-4 py-2 bg-yellow-400 text-base font-medium text-black hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:text-sm"
                       onClick={() => setEditInformationOpen(true)}
@@ -278,19 +278,19 @@ const Profile = () => {
                     <span className="mr-2">
                       <PiGenderMaleBold className="text-[#007BFF]" />
                     </span>
-                    {user?.profile?.gender}
+                    {user?.profile?.gender || "Not Specified"}
                   </p>
                   <p className="flex items-center text-gray-700 font-semibold">
                     <span className="mr-2">
                       <GiBigDiamondRing className="text-[#007BFF]" />
                     </span>
-                    {user?.profile?.maritalStatus}
+                    {user?.profile?.maritalStatus || "Not Specified"}
                   </p>
                   <p className="flex items-center text-gray-700 font-semibold">
                     <span className="mr-2">
                       <FaLocationDot className="text-[#007BFF]" />
                     </span>
-                    {user?.profile?.location}
+                    {user?.profile?.location || "Not Specified"}
                   </p>
                 </div>
 
@@ -326,7 +326,7 @@ const Profile = () => {
                             href={`https://instagram.com/${socialMedia?.instagram}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[#E1306C] hover:text-{#C13584} transition-colors"
+                            className="text-[#E1306C] hover:text-[#C13584] transition-colors"
                           >
                             <FaInstagram size={24} />
                           </a>
@@ -353,7 +353,7 @@ const Profile = () => {
                         )}
                       </>
                     ) : (
-                      <p className="text-gray-600">
+                      <p className="text-red-600">
                         No social media links found!
                       </p>
                     )}
@@ -375,12 +375,13 @@ const Profile = () => {
                     </button>
                   </h2>
                   <p
-                    className="text-gray-700"
+                    className="text-gray-500 font-semibold"
                     style={{ whiteSpace: "pre-wrap" }}
                   >
                     {aboutMe}
                   </p>
                 </div>
+
                 {/* Education Details */}
                 <div className="bg-white rounded-lg shadow-md p-6">
                   <h2 className="flex items-center justify-between text-xl font-semibold mb-4">
@@ -402,15 +403,19 @@ const Profile = () => {
                       >
                         <div className="">
                           <h3 className="font-semibold">{edu.institute}</h3>
-                          <p className="text-gray-600">{edu.degree}</p>
-                          <p className="text-gray-600">{edu.branch}</p>
-                          <p className="text-gray-500">
+                          <p className="text-gray-500 font-semibold">
+                            {edu.degree}
+                          </p>
+                          <p className="text-gray-500 font-semibold">
+                            {edu.branch}
+                          </p>
+                          <p className="text-gray-500 font-semibold">
                             {edu.joiningYear} - {edu.passingYear}
                           </p>
                         </div>
                         <div className="">
                           <button
-                            className="text-black transition-colors"
+                            className="text-red-600 transition-colors"
                             onClick={() => {
                               setEditEducationOpen(true);
                               setSelectedEducation(edu);
@@ -430,18 +435,18 @@ const Profile = () => {
                             {user?.student?.institute ||
                               "Thapar Polytechnic College"}
                           </h3>
-                          <p className="text-gray-600">
+                          <p className="font-semibold text-gray-500">
                             {user?.student?.course}
                           </p>
-                          <p className="text-gray-600">
+                          <p className="font-semibold text-gray-500">
                             {user?.student?.branch}
                           </p>
-                          <p className="text-gray-500">
+                          <p className="font-semibold text-gray-500">
                             {user?.student?.joiningYear} -{" "}
                             {user?.student?.passingYear} Batch
                           </p>
-                          <p className="text-gray-600">
-                            <span className="font-semibold">
+                          <p className="font-semibold text-gray-500">
+                            <span className="font-semibold text-black">
                               Roll Number -{" "}
                             </span>
                             {user?.student?.rollNo}
@@ -476,10 +481,10 @@ const Profile = () => {
                         <h3 className="font-semibold">
                           {user?.faculty?.jobTitle}
                         </h3>
-                        <p className="text-gray-600">
+                        <p className="font-semibold text-gray-500">
                           {user?.faculty?.department}
                         </p>
-                        <p className="text-gray-500">
+                        <p className="font-semibold text-gray-500">
                           {user?.faculty?.joiningYear} -{" "}
                           {user?.faculty?.leftYear}
                         </p>
@@ -501,8 +506,10 @@ const Profile = () => {
                     >
                       <div className="">
                         <h3 className="font-semibold">{exp.jobTitle}</h3>
-                        <p className="text-gray-600">{exp.company}</p>
-                        <p className="text-gray-500">
+                        <p className="font-semibold text-gray-500">
+                          {exp.company}
+                        </p>
+                        <p className="font-semibold text-gray-500">
                           {exp.joiningYear} - {exp.leftYear}
                         </p>
                       </div>
