@@ -134,7 +134,7 @@ const UserDetail = () => {
                     <>{userDetails?.phone}</>
                   ) : (
                     <>
-                      <span className="mr-2">{userDetails?.phone}</span>
+                      <span className="mr-2 blur-sm">{userDetails?.phone}</span>
                       <FaLock className="text-blue-500" />
                     </>
                   )}
