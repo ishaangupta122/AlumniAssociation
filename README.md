@@ -1,6 +1,11 @@
 # Technologies Used:
 
-React, Node, Express, Postgres, Prisma ORM, Tailwind CSS
+- React
+- Node
+- Express
+- Postgres
+- Prisma ORM
+- Tailwind CSS
 
 # Steps to run the project:
 
